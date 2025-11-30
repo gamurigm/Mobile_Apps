@@ -1,16 +1,14 @@
-.DS_Store
-.idea/
-.vscode/
-*.iml
-android/.gradle
-android/local.properties
-ios/.symlinks
-ios/Pods
-build/
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-node_modules/
-*.rar
+# Ignore everything
+*
+
+# Un-ignore directories so we can traverse them
+!*/
+
+# Un-ignore specific file types
+!*.pdf
+!*.docx
+!*.gitignore
+
+# Un-ignore lib directories and their contents anywhere
+!**/lib/
+!**/lib/**
