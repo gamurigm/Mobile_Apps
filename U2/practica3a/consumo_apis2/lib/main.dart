@@ -10,7 +10,7 @@ import 'data/repositories/producto_repository_impl.dart';
 import 'data/datasource/producto_api_datasource.dart';
 
 import 'presentation/routes/app_routes.dart';
-import 'package:modern_theme/modern_theme.dart';
+import 'presentation/views/theme/tema_general.dart';
 
 void main() {
   // Inyección de dependencias

@@ -8,11 +8,11 @@ class CharacterViewModel extends ChangeNotifier {
   bool loading = false;
   List<CharacterEntity> _allCharacters = [];
   List<CharacterEntity> _filteredCharacters = [];
-  
+
   // Paginación
   static const int itemsPerPage = 10;
   int _currentPage = 0;
-  
+
   // Filtro por familia
   String? _selectedFamily;
   List<String> _families = [];
@@ -22,20 +22,20 @@ class CharacterViewModel extends ChangeNotifier {
   // Getters
   List<CharacterEntity> get characters => _paginatedCharacters;
   List<CharacterEntity> get _paginatedCharacters {
-    final start = _currentPage * itemsPerPage;
-    final end = start + itemsPerPage;
-    if (start >= _filteredCharacters.length) return [];
+    // Infinite Scroll: Show all items from 0 to current limit
+    final limit = (_currentPage + 1) * itemsPerPage;
+    if (_filteredCharacters.isEmpty) return [];
     return _filteredCharacters.sublist(
-      start, 
-      end > _filteredCharacters.length ? _filteredCharacters.length : end
+      0,
+      limit > _filteredCharacters.length ? _filteredCharacters.length : limit,
     );
   }
-  
+
   int get currentPage => _currentPage;
   int get totalPages => (_filteredCharacters.length / itemsPerPage).ceil();
   bool get hasNextPage => _currentPage < totalPages - 1;
   bool get hasPreviousPage => _currentPage > 0;
-  
+
   String? get selectedFamily => _selectedFamily;
   List<String> get families => _families;
 
@@ -68,7 +68,7 @@ class CharacterViewModel extends ChangeNotifier {
   void filterByFamily(String? family) {
     _selectedFamily = family;
     _currentPage = 0;
-    
+
     if (family == null || family.isEmpty) {
       _filteredCharacters = _allCharacters;
     } else {
@@ -100,4 +100,3 @@ class CharacterViewModel extends ChangeNotifier {
     }
   }
 }
-
