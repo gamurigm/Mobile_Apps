@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:modern_theme/modern_theme.dart';
+import '../../theme/colores_esquema.dart';
 
 class DeleteConfirmDialog extends StatelessWidget {
-  final String itemName;
-  final String itemType;
+  final String productName;
   final VoidCallback onConfirm;
   final VoidCallback onCancel;
 
   const DeleteConfirmDialog({
     super.key,
-    required this.itemName,
-    this.itemType = 'elemento',
+    required this.productName,
     required this.onConfirm,
     required this.onCancel,
   });
@@ -23,9 +21,9 @@ class DeleteConfirmDialog extends StatelessWidget {
         color: AppColors.advertencia,
         size: 48,
       ),
-      title: Text('¿Eliminar $itemType?'),
+      title: const Text('¿Eliminar producto?'),
       content: Text(
-        '¿Estás seguro de que deseas eliminar "$itemName"? Esta acción no se puede deshacer.',
+        '¿Estás seguro de que deseas eliminar "$productName"? Esta acción no se puede deshacer.',
       ),
       actions: [
         TextButton(

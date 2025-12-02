@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:modern_theme/modern_theme.dart';
+import '../../theme/colores_esquema.dart';
 
 class LoadingState extends StatelessWidget {
   final String message;
 
   const LoadingState({
     super.key,
-    this.message = 'Cargando...',
+    this.message = 'Cargando productos...',
   });
 
   @override

@@ -6,3 +6,4 @@ export 'info_item.dart';
 export 'highlight_value.dart';
 export 'generic_header.dart';
 export 'status_badge.dart';
+export 'film_grid_card.dart';

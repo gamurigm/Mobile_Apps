@@ -50,7 +50,6 @@ class MyApp extends StatelessWidget {
         title: "Studio Ghibli Films",
         debugShowCheckedModeBanner: false,
         theme: TemaGeneral.temaClaro,
-        themeMode: ThemeMode.light,
         routes: AppRoutes.routes,
         onGenerateRoute: AppRoutes.onGenerateRoute,
       ),

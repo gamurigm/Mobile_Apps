@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/colores_esquema.dart';
+
 import '../atoms/atoms.dart';
 
 /// Molecule genérica para headers con acciones

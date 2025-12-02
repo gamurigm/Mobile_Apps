@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:modern_theme/modern_theme.dart';
+
 
 /// Card genérica y flexible para cualquier tipo de entidad
 /// Soporta header personalizado, contenido dinámico y acciones

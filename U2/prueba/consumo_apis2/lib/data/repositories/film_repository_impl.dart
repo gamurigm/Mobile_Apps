@@ -8,7 +8,7 @@ class FilmRepositoryImpl implements FilmRepository {
   FilmRepositoryImpl(this.dataSource);
 
   @override
-  Future<List<FilmEntity>> getFilms() async {
+  Future<List<FilmEntity>> getAll() async {
     try {
       return await dataSource.getFilms();
     } catch (e) {
@@ -17,11 +17,23 @@ class FilmRepositoryImpl implements FilmRepository {
   }
 
   @override
-  Future<FilmEntity> getFilmById(String id) async {
+  Future<FilmEntity?> getById(String id) async {
     try {
       return await dataSource.getFilmById(id);
     } catch (e) {
       throw Exception('Error en el repositorio: $e');
     }
+  }
+
+  @override
+  Future<List<FilmEntity>> getFilms() => getAll();
+
+  @override
+  Future<FilmEntity> getFilmById(String id) async {
+    final film = await getById(id);
+    if (film == null) {
+      throw Exception('Film not found: $id');
+    }
+    return film;
   }
 }
