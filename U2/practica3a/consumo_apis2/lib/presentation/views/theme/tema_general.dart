@@ -64,7 +64,7 @@ class TemaGeneral {
     cardTheme: CardThemeData(
       elevation: 0,
       color: AppColors.superficie,
-      surfaceTintColor: AppColors.primario.withOpacity(0.05),
+      surfaceTintColor: Colors.transparent,
       shadowColor: AppColors.sombraMedia,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -74,12 +74,12 @@ class TemaGeneral {
     ),
     
     // FAB moderno
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.primario,
       foregroundColor: AppColors.txtClaro,
       elevation: 4,
       highlightElevation: 8,
-      shape: CircleBorder(),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     ),
     
     // Divisores
@@ -158,6 +158,154 @@ class TemaGeneral {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       behavior: SnackBarBehavior.floating,
       elevation: 4,
+    ),
+  );
+
+  // 🌃 Tema Oscuro Neon Moderno
+  static ThemeData temaOscuro = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    
+    // Esquema de colores Neon
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.neonPrimario,
+      onPrimary: AppColors.fondoNeon,
+      primaryContainer: AppColors.primarioOscuro,
+      onPrimaryContainer: AppColors.neonPrimario,
+      
+      secondary: AppColors.neonSecundario,
+      onSecondary: AppColors.fondoNeon,
+      secondaryContainer: AppColors.secundarioOscuro,
+      onSecondaryContainer: AppColors.neonSecundario,
+      
+      tertiary: AppColors.neonTerciario,
+      onTertiary: AppColors.fondoNeon,
+      tertiaryContainer: AppColors.terciarioOscuro,
+      onTertiaryContainer: AppColors.neonTerciario,
+      
+      error: AppColors.neonError,
+      onError: AppColors.fondoNeon,
+      errorContainer: Color(0xFF450A0A),
+      onErrorContainer: AppColors.neonError,
+      
+      surface: AppColors.superficieNeon,
+      onSurface: AppColors.txtOscuroClaro,
+      surfaceContainerHighest: AppColors.bordeNeon,
+      
+      outline: AppColors.bordeNeon,
+      outlineVariant: AppColors.bordeNeon,
+      shadow: Colors.black,
+      scrim: Colors.black54,
+    ),
+    
+    // Tipografía adaptada a oscuro
+    textTheme: TipografiaApp.texto.apply(
+      bodyColor: AppColors.txtOscuroClaro,
+      displayColor: AppColors.txtOscuroClaro,
+    ),
+    
+    // AppBar Oscuro
+    appBarTheme: TemaAppBar.temaAppBar.copyWith(
+      backgroundColor: AppColors.fondoNeon,
+      foregroundColor: AppColors.txtOscuroClaro,
+      surfaceTintColor: Colors.transparent,
+    ),
+    
+    // Botones adaptados
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.neonPrimario,
+        foregroundColor: AppColors.fondoNeon,
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    ),
+    
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.neonPrimario,
+        side: const BorderSide(color: AppColors.neonPrimario),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    ),
+    
+    // Fondo general oscuro
+    scaffoldBackgroundColor: AppColors.fondoNeon,
+    
+    // Tarjetas oscuras
+    cardTheme: CardThemeData(
+      elevation: 0,
+      color: AppColors.superficieNeon,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.black26,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: AppColors.bordeNeon, width: 1),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    ),
+    
+    // FAB Oscuro
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.neonPrimario,
+      foregroundColor: AppColors.fondoNeon,
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    ),
+    
+    // Divisores oscuros
+    dividerTheme: const DividerThemeData(
+      color: AppColors.bordeNeon,
+      thickness: 1,
+      space: 1,
+    ),
+    
+    // Iconos oscuros
+    iconTheme: const IconThemeData(
+      color: AppColors.txtOscuroClaro,
+      size: 24,
+    ),
+    
+    // Inputs oscuros
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.superficieNeon,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.bordeNeon),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.bordeNeon),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.neonPrimario, width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.neonError),
+      ),
+      labelStyle: const TextStyle(color: AppColors.txtOscuroClaro),
+      hintStyle: TextStyle(color: AppColors.txtOscuroClaro.withOpacity(0.5)),
+    ),
+
+    // Dialogs oscuros
+    dialogTheme: const DialogThemeData(
+      backgroundColor: AppColors.superficieNeon,
+      surfaceTintColor: Colors.transparent,
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: AppColors.txtOscuroClaro,
+      ),
+      contentTextStyle: TextStyle(
+        fontSize: 14,
+        color: AppColors.txtOscuroClaro,
+      ),
     ),
   );
 }

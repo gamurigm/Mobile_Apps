@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/producto_viewmodel.dart';
 import '../../domain/entities/producto_entity.dart';
-import 'package:modern_theme/modern_theme.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,6 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<ProductoViewModel>();
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Cargando productos...',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.txtSecundario,
+                      color: colorScheme.onSurface.withOpacity(0.7),
                     ),
                   ),
                 ],
@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildEmptyState(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -57,21 +58,21 @@ class HomePage extends StatelessWidget {
           Icon(
             Icons.inventory_2_outlined,
             size: 80,
-            color: AppColors.txtTerciario,
+            color: colorScheme.onSurface.withOpacity(0.4),
           ),
           const SizedBox(height: 16),
           Text(
             'No hay productos',
-            style: Theme.of(
-              context,
-            ).textTheme.headlineMedium?.copyWith(color: AppColors.txtPrincipal),
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              color: colorScheme.onSurface,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             'Agrega tu primer producto',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: AppColors.txtSecundario),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurface.withOpacity(0.7),
+            ),
           ),
         ],
       ),
@@ -94,19 +95,20 @@ class HomePage extends StatelessWidget {
     ProductoViewModel vm,
     ProductoEntity p,
   ) {
+    final colorScheme = Theme.of(context).colorScheme;
     final stockText = p.stock > 0 ? p.stock.toString() : 'N/D';
     final stockColor = p.stock > 10
-        ? AppColors.exito
+        ? const Color(0xFF10B981)  // Verde esmeralda
         : p.stock > 0
-        ? AppColors.advertencia
-        : AppColors.error;
+        ? const Color(0xFFF97316)  // Naranja cálido
+        : colorScheme.error;
 
     return Card(
       elevation: 2,
-      shadowColor: AppColors.sombra.withOpacity(0.1),
+      shadowColor: colorScheme.shadow.withOpacity(0.1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: AppColors.borde.withOpacity(0.5), width: 1),
+        side: BorderSide(color: colorScheme.outline.withOpacity(0.5), width: 1),
       ),
       margin: const EdgeInsets.only(bottom: 16),
       child: InkWell(
@@ -124,7 +126,7 @@ class HomePage extends StatelessWidget {
                     child: Text(
                       p.nombre,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: AppColors.txtPrincipal,
+                        color: colorScheme.onSurface,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -133,13 +135,13 @@ class HomePage extends StatelessWidget {
                     icon: const Icon(Icons.edit_outlined, size: 20),
                     onPressed: () => _showProductDialog(context, vm, p),
                     tooltip: 'Editar',
-                    color: AppColors.primario,
+                    color: colorScheme.primary,
                   ),
                   IconButton(
                     icon: const Icon(Icons.delete_outline, size: 20),
                     onPressed: () => _showDeleteConfirmation(context, vm, p),
                     tooltip: 'Eliminar',
-                    color: AppColors.error,
+                    color: colorScheme.error,
                   ),
                 ],
               ),
@@ -152,13 +154,15 @@ class HomePage extends StatelessWidget {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  gradient: AppColors.gradientePrimario,
+                  gradient: LinearGradient(
+                    colors: [colorScheme.primary, colorScheme.primaryContainer],
+                  ),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
                   '\$${p.precio.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: AppColors.txtClaro,
+                    color: colorScheme.onPrimary,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -173,14 +177,14 @@ class HomePage extends StatelessWidget {
                     Icon(
                       Icons.category_outlined,
                       size: 16,
-                      color: AppColors.txtSecundario,
+                      color: colorScheme.onSurface.withOpacity(0.6),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
                       child: Text(
                         p.categoria,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.txtSecundario,
+                          color: colorScheme.onSurface.withOpacity(0.8),
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -212,12 +216,13 @@ class HomePage extends StatelessWidget {
     ProductoViewModel vm,
     ProductoEntity product,
   ) {
+    final colorScheme = Theme.of(context).colorScheme;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        icon: const Icon(
+        icon: Icon(
           Icons.warning_amber_rounded,
-          color: AppColors.advertencia,
+          color: const Color(0xFFF97316),  // Naranja advertencia
           size: 48,
         ),
         title: const Text('¿Eliminar producto?'),
@@ -234,7 +239,7 @@ class HomePage extends StatelessWidget {
               vm.deleteProductos(product.id);
               Navigator.pop(ctx);
             },
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.error),
+            style: ElevatedButton.styleFrom(backgroundColor: colorScheme.error),
             child: const Text('Eliminar'),
           ),
         ],
@@ -247,6 +252,7 @@ class HomePage extends StatelessWidget {
     ProductoViewModel vm,
     ProductoEntity? product,
   ) {
+    final colorScheme = Theme.of(context).colorScheme;
     final nombreController = TextEditingController(text: product?.nombre ?? '');
     final precioController = TextEditingController(
       text: product?.precio.toString() ?? '',
@@ -263,7 +269,7 @@ class HomePage extends StatelessWidget {
       builder: (ctx) => AlertDialog(
         icon: Icon(
           product == null ? Icons.add_circle_outline : Icons.edit_outlined,
-          color: AppColors.primario,
+          color: colorScheme.primary,
           size: 48,
         ),
         title: Text(product == null ? "Agregar Producto" : "Editar Producto"),

@@ -24,22 +24,22 @@ class AppColors {
   static const Color informacion = Color(0xFF3B82F6); // Azul cielo
   
   // Paleta de texto moderna
-  static const Color txtPrincipal = Color(0xFF0F172A); // Gris casi negro
-  static const Color txtSecundario = Color(0xFF475569); // Gris oscuro
-  static const Color txtTerciario = Color(0xFF94A3B8); // Gris medio
+  static const Color txtPrincipal = Color(0xFF1A1A1A); // Negro puro para contraste
+  static const Color txtSecundario = Color(0xFF333333); // Gris muy oscuro
+  static const Color txtTerciario = Color(0xFF666666); // Gris oscuro
   static const Color txtClaro = Color(0xFFF8FAFC); // Blanco roto
   static const Color txtDesactivado = Color(0xFFCBD5E1); // Gris claro
   
   // Fondos y superficies
-  static const Color fondoClaro = Color(0xFFFAFBFC); // Blanco con toque azul
-  static const Color fondoSecundario = Color(0xFFF1F5F9); // Gris ultra claro
-  static const Color fondoTerciario = Color(0xFFE2E8F0); // Gris muy claro
-  static const Color superficie = Color(0xFFFFFFFF); // Blanco puro
-  static const Color superficieVariante = Color(0xFFF8FAFC); // Blanco ligeramente gris
+  static const Color fondoClaro = Color(0xFFD4D9DF); // Gris neutro sólido
+  static const Color fondoSecundario = Color(0xFFC9CED4); // Gris más oscuro
+  static const Color fondoTerciario = Color(0xFFBCC3CB); // Gris muy oscuro
+  static const Color superficie = Color(0xFFE8ECEF); // Gris más claro que fondo
+  static const Color superficieVariante = Color(0xFFE0E4E8); // Gris claro
   
   // Bordes y sombras
-  static const Color borde = Color(0xFFE2E8F0); // Gris para bordes
-  static const Color bordeSecundario = Color(0xFFCBD5E1); // Gris oscuro para bordes
+  static const Color borde = Color(0xFFD0D5DB); // Gris más oscuro para bordes
+  static const Color bordeSecundario = Color(0xFFB8BEC5); // Gris oscuro para bordes
   static const Color bordeFocus = Color(0xFF6366F1); // Primario para focus
   static const Color sombra = Color(0x0D000000); // Sombra muy suave
   static const Color sombraMedia = Color(0x1A000000); // Sombra media
@@ -50,4 +50,15 @@ class AppColors {
   static const Color fondoOscuro = Color(0xFF0F172A); // Negro azulado
   static const Color superficieOscura = Color(0xFF1E293B); // Gris muy oscuro
   static const Color txtOscuroClaro = Color(0xFFE2E8F0); // Gris claro para oscuro
+
+  // 🌃 Paleta Neon Dark Mode
+  static const Color neonPrimario = Color(0xFF818CF8); // Índigo brillante
+  static const Color neonSecundario = Color(0xFFA78BFA); // Púrpura brillante
+  static const Color neonTerciario = Color(0xFF22D3EE); // Cian eléctrico
+  static const Color neonAcento = Color(0xFFFBBF24); // Ámbar brillante
+  static const Color neonError = Color(0xFFF87171); // Rojo brillante
+  
+  static const Color fondoNeon = Color(0xFF0B1120); // Negro profundo
+  static const Color superficieNeon = Color(0xFF151E32); // Azul oscuro profundo
+  static const Color bordeNeon = Color(0xFF2D3748); // Gris azulado
 }

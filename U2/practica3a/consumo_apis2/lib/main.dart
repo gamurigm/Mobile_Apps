@@ -62,6 +62,7 @@ class MyApp extends StatelessWidget {
         title: "Consumo API Flutter",
         debugShowCheckedModeBanner: false,
         theme: TemaGeneral.temaClaro,
+        darkTheme: TemaGeneral.temaOscuro,
         themeMode: ThemeMode.light,
         routes: AppRoutes.routes,
       ),
